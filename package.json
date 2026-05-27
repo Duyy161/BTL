@@ -6,11 +6,12 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "eslint",
-        "db:generate": "prisma generate",
-        "db:migrate": "prisma migrate dev --name init",
-        "db:seed": "node prisma/seed.cjs"
-    },
+    "lint": "eslint",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev --name init",
+    "db:seed": "node prisma/seed.cjs",
+    "db:push": "prisma db push"
+  },
     "dependencies": {
         "@prisma/client": "^6.16.2",
         "next": "16.2.6",
