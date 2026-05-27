@@ -1,10 +1,8 @@
-import { ExpertProfile } from "@prisma/client";
-
 const tokenize = (value: string) =>
   value.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
 
 export function scoreExpertMatch(
-  expert: ExpertProfile,
+  expert: { technologies: string; rating: number; projectCount: number },
   project: { problem: string; budgetVnd: number; deadlineMonths: number },
 ) {
   const techTokens = tokenize(expert.technologies);

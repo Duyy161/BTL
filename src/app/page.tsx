@@ -66,8 +66,13 @@ export default function Home() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-      if (!res.ok) throw new Error(await res.text());
-      await loadData();
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.error ?? "Project submission failed.");
+      if (data?.project) {
+        setProjects((prev) => [data.project, ...prev]);
+      } else {
+        await loadData();
+      }
     } finally {
       setLoading(false);
     }
